@@ -3,18 +3,9 @@ NodeList.prototype.forEach = Array.prototype.forEach;
 
 // Object.forEach
 Object.prototype.forEach = function(callback, context) {
-
-    var keys = [],
-        prop;
-    
-    for (prop in this) {
-        if (this.hasOwnProperty(prop)) {
-            keys.push(prop);
-        }
-    }
-    
-    keys.forEach(function (key) {
-        callback.apply(context || null, [key, this[key]]);
+	var ctx = context || null;
+    Object.keys(this).forEach(function (key) {
+        callback.apply(ctx, [key, this[key]]);
     }, this);
 };
 
