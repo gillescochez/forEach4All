@@ -5,7 +5,7 @@ NodeList.prototype.forEach = Array.prototype.forEach;
 Object.prototype.forEach = function(callback, context) {
 	var ctx = context || null;
     Object.keys(this).forEach(function (key) {
-        callback.apply(ctx, [key, this[key]]);
+        callback.apply(ctx, [this[key], key]);
     }, this);
 };
 
